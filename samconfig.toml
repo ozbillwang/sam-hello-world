@@ -17,3 +17,13 @@ s3_prefix = "hello-world"
 region = "ap-southeast-2"
 capabilities = "CAPABILITY_IAM"
 parameter_overrides = "\"name=bill\" \"enviroinment=dev\""
+
+[prod]
+[prod.deploy]
+[prod.deploy.parameters]
+stack_name = "hello-world"
+s3_bucket = "aws-sam-cli-managed-default-samclisourcebucket-another-random-id"
+s3_prefix = "hello-world"
+region = "ap-southeast-2"
+capabilities = "CAPABILITY_IAM"
+parameter_overrides = "\"name=bill\" \"enviroinment=prod\""
