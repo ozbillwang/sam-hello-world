@@ -63,6 +63,8 @@ workflows:
       - approval:
           name: approval_prod
           type: approval
+          requires:
+            - build
           filters:
             branches:
               only: master
