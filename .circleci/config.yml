@@ -26,7 +26,9 @@ jobs:
       - run: make validate
 
   deploy:
-    executor: python_executor
+    #executor: python_executor
+    machine:
+      image: circleci/classic:201808-01
     parameters:
       environment:
         type: enum
@@ -34,6 +36,9 @@ jobs:
     steps:
       - checkout
       - run: |
+          pyenv versions
+          pyenv global 3.7.0
+          pip install --upgrade pip
           pip install --upgrade aws-sam-cli
       - run:
           name: deploy
