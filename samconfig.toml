@@ -1,5 +1,14 @@
 version = 0.1
 [dev]
+[dev.local_invoke]
+[dev.local_invoke.parameters]
+stack_name = "hello-world"
+s3_bucket = "aws-sam-cli-managed-default-samclisourcebucket-1tiz37wk8ux2q"
+s3_prefix = "hello-world"
+region = "ap-southeast-2"
+capabilities = "CAPABILITY_IAM"
+parameter_overrides = "\"name=bill\" \"enviroinment=dev\""
+
 [dev.deploy]
 [dev.deploy.parameters]
 stack_name = "hello-world"

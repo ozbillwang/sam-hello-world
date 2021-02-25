@@ -1,0 +1,74 @@
+version: 2.1
+
+### Context Setup
+# AWS_ACCESS_KEY_ID
+# AWS_SECRET_ACCESS_KEY
+# AWS_ACCOUNT_ID
+# AWS_REGION
+
+executors:
+  python_executor:
+    docker:
+      - image: circleci/python:3.6.4
+
+jobs:
+  build:
+    machine:
+      image: circleci/classic:201808-01
+    steps: # a collection of executable commands
+      - checkout # check out source code to working directory
+      # Read about caching dependencies: https://circleci.com/docs/2.0/caching/
+      - run: |
+          pyenv versions
+          pyenv global 3.7.0
+          pip install --upgrade pip
+          pip install --upgrade aws-sam-cli
+      - run: make validate
+
+  deploy:
+    executor: python_executor
+    parameters:
+      environment:
+        type: enum
+        enum: ["test", "dev", "ops", "qa", "sit", "demo", "uat", "prod"]
+    steps:
+      - checkout
+      - run:
+          name: deploy
+          environment:
+            ENVIRONMENT: << parameters.environment >>
+          command: |
+            make deploy env=${ENVIRONMENT}
+
+workflows:
+  build-and-deploy:
+    jobs:
+      - build:
+          name: build
+          context: DevContext
+      - deploy:
+          name: deploy_dev
+          environment: dev
+          context: DevContext
+          requires:
+            - build
+          filters:
+            branches:
+              only: develop
+      - approval:
+          name: approval_prod
+          type: approval
+          requires:
+            - deploy_dev
+          filters:
+            branches:
+              only: master
+      - deploy:
+          name: deploy_prod
+          environment: prod
+          context: ProdContext
+          requires:
+            - approval_prod
+          filters:
+            branches:
+              only: master
