@@ -6,7 +6,7 @@ This is a template project to give the instruction on how to deploy Cloudformati
 
 If you know [terraform](https://www.terraform.io/), another IaC tool, I am fully enjoy with this tool to manage the infrastructure deployment on Clouds, but when deal with Lambda functions, it is not good enough, especially it doesn't have `package` feature as in AWS CLI and AWS SAM CLI. 
 
-Another reason is, some companies are only allowed to use AWS cloudformation temlates, not third party tools, then you know you have to write a lot of scripts with AWS CLI commands. You should reference this template to deploy your cloudformation stacks with AWS SAM CLI. It would make your life easier.
+Another reason is, some companies are only allowed to use AWS cloudformation templates, not third party tools, then you know you have to write a lot of scripts with AWS CLI commands. You should reference this template to deploy your cloudformation stacks with AWS SAM CLI. It would make your life easier.
 
 ### Get help
 
