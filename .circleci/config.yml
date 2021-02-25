@@ -34,8 +34,6 @@ jobs:
     steps:
       - checkout
       - run: |
-          pyenv versions
-          pyenv global 3.7.0
           pip install --upgrade pip
           pip install --upgrade aws-sam-cli
       - run:
