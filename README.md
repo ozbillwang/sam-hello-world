@@ -8,6 +8,11 @@ If you know [terraform](https://www.terraform.io/), another IaC tool, I am fully
 
 Another reason is, some companies are only allowed to use AWS cloudformation templates, not third party tools, then you know you have to write a lot of scripts with [AWS CLI commands](https://aws.amazon.com/cli/). You should reference this template to deploy your cloudformation stacks with AWS SAM CLI. It would make your life easier.
 
+### Prerequisite
+
+* [install aws sam cli](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/serverless-sam-cli-install.html)
+* [install docker](https://docs.docker.com/get-docker/)
+
 ### Get help
 
 ```
