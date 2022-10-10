@@ -74,3 +74,9 @@ The Circle CI pipeline will run the build and deployment as below
 3) (CD stage for Prod) `master` branch: run build, validatation, wait for approve, then deploy to production environment.
 
 NOTES: the pipeline stages are generic, should be applied to any CICD tools.
+
+### Dry-run in SAM CLI
+
+I explained the lack of dry-run feature in SAM cli at https://github.com/aws/aws-sam-cli/issues/1916#issuecomment-1272671519
+
+the exist feature with `sam deploy --confirm-changeset ` is not good enough
